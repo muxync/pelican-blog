@@ -1,4 +1,4 @@
-output
+public
 *.pyc
 __pycache__
 **.sw?
