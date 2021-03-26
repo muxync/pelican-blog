@@ -9,6 +9,7 @@ variables:
     - pip install -r requirements.txt
     - sed -i "s#^SITEURL.*#SITEURL = '/${CI_PROJECT_NAME}'#g" pelicanconf.py publishconf.py
     - make publish
+    - cp content/extra/* public/
 
 test:
   extends: .build
