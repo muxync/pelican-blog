@@ -24,4 +24,5 @@ DELETE_OUTPUT_DIRECTORY = True
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
 
+# GitLab pages requires 'public' for OUTPUT_PATH
 OUTPUT_PATH = 'public'
