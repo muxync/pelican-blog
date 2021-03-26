@@ -36,7 +36,7 @@ DEFAULT_PAGINATION = 10
 THEME = os.path.join((os.path.dirname(os.path.realpath(__file__))), 'theme')
 
 # Extra
-STATIC_PATHS = ['extra/robots.txt', 'extra/favicon.ico']
+STATIC_PATHS = ['extra']
 EXTRA_PATH_METADATA = {'extra/robots.txt': {'path': 'robots.txt'},
                        'extra/favicon.ico': {'path': 'favicon.ico'}}
 
