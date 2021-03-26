@@ -5,7 +5,7 @@ import os
 
 AUTHOR = 'Mark Mulligan'
 SITENAME = 'MarkLog'
-SITEURL = '/pelican-blog'
+SITEURL = ''
 
 PATH = 'content'
 
