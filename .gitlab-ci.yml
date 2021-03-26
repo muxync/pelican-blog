@@ -7,7 +7,7 @@ variables:
   script:
     - apk update && apk add make
     - pip install -r requirements.txt
-    - sed -i "s#^SITEURL.*#SITEURL = '/${CI_PROJECT_NAME}'#g" pelicanconf.py publishconf.py
+    - sed -i "s#^SITEURL.*#SITEURL = '${CI_PAGES_URL}'#g" pelicanconf.py publishconf.py
     - make publish
     - cp content/extra/* public/
 
