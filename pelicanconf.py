@@ -21,11 +21,10 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Contact', 'mailto:contact[AYAT]muxync[DAWT]net <Mark Mulligan>'),)
+LINKS = (('GitLab', 'https://gitlab.com/muxync'),)
 
 # Social widget
-SOCIAL = (('GitLab', 'https://gitlab.com/muxync'),
-          ('LinkedIn', 'https://www.linkedin.com/in/mark-mulligan-898b3962'),)
+SOCIAL = (('LinkedIn', 'https://www.linkedin.com/in/mark-mulligan-898b3962'),)
 
 DEFAULT_PAGINATION = 10
 
