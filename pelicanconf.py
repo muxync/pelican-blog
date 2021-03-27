@@ -21,7 +21,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Contact', 'mailto:contact@muxync.net'),)
+LINKS = (('Contact', 'mailto:contact[AYAT]muxync[DAWT]net <Mark Mulligan>'),)
 
 # Social widget
 SOCIAL = (('GitLab', 'https://gitlab.com/muxync'),
