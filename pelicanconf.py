@@ -36,9 +36,10 @@ DEFAULT_PAGINATION = 10
 THEME = os.path.join((os.path.dirname(os.path.realpath(__file__))), 'theme')
 
 # Extra
-STATIC_PATHS = ['extra']
+STATIC_PATHS = ['extra', 'images']
 EXTRA_PATH_METADATA = {'extra/robots.txt': {'path': 'robots.txt'},
                        'extra/favicon.ico': {'path': 'favicon.ico'}}
+USER_LOGO_URL = SITEURL + '/images/logo.png'
 
 # GitLab pages requires 'public' for OUTPUT_PATH
 OUTPUT_PATH = 'public'
