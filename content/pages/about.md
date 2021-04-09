@@ -11,7 +11,9 @@ This static site (built with [Pelican](https://getpelican.com)) will act as a lo
   * Automation (GitLab CI/CD)
   * Embedded Hardware (CircuitPython/Raspberry Pi)
 
-If this content proves useful for you please consider making a donation to the charity of your choice.  This site will remain free under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
+This site code will remain free under the [MIT License](https://en.wikipedia.org/wiki/MIT_License) and the content under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0).
+
+If this content proves useful for you please consider making a donation to the charity of your choice.
 
 Happy hacking!
 
