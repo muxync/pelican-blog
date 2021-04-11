@@ -5,7 +5,7 @@ import os
 
 AUTHOR = 'Mark Mulligan'
 SITENAME = 'MarkLog'
-SITEURL = ''
+SITEURL = ''  # Intentionally blank; automatically set in .gitlab-ci.yml
 
 PATH = 'content'
 
