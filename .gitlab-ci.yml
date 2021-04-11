@@ -4,6 +4,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
 .build:
+  cache: {}
   script:
     - apk update && apk add make
     - pip install -r requirements.txt
