@@ -1,3 +1,6 @@
-[submodule "theme"]
-  path = theme
-  url = ../pelican-theme-svbhack.git
+[submodule "themes"]
+	path = themes
+	url = ../pelican-themes.git
+[submodule "plugins"]
+	path = plugins
+	url = ../pelican-plugins.git
