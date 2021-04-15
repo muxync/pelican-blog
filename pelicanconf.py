@@ -43,6 +43,9 @@ STATIC_PATHS = ['extra', 'images']
 EXTRA_PATH_METADATA = {'extra/robots.txt': {'path': 'robots.txt'},
                        'extra/favicon.ico': {'path': 'favicon.ico'}}
 
+# Ignore files
+IGNORE_FILES = ['.#*', '__pycache__', 'README.md']
+
 # GitLab pages requires 'public' for OUTPUT_PATH
 OUTPUT_PATH = 'public'
 
