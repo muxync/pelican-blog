@@ -57,6 +57,7 @@ JINJA_ENVIRONMENT = {
 }
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'search']
 
+SEARCH_URL = ''  # Intentionally blank; automatically set in .gitlab-ci.yml
 SITELOGO = 'images/logo.png'
 SITELOGO_SIZE = 24
 FAVICON = 'favicon.ico'
