@@ -9,6 +9,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   #GIT_USER_EMAIL: <set it project variables>
   #GIT_USER_NAME: <set it project variables>
+  #SSH_PRIVATE_KEY: <set it project variables>
 
 .build:
   cache: {}
