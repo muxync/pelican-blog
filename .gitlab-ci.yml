@@ -50,7 +50,6 @@ content:
     - chmod 700 ~/.ssh
     - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    #- export CI_REPOSITORY_SSH_URL=$(echo ${CI_REPOSITORY_URL} | sed -e 's#https\?://gitlab-ci-token:.*@#ssh://git@ssh.#g')
   script:
     - git checkout -b auto-content-${CI_PIPELINE_IID}
     - GIT_SUBMOD_SHA_BEFORE=$(git submodule status | grep content | awk '{print $1}')
