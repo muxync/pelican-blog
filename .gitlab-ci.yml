@@ -11,6 +11,31 @@ variables:
   #GIT_USER_NAME: <set it project variables>
   #SSH_PRIVATE_KEY: <set it project variables>
 
+content:
+  stage: content
+  cache: {}
+  before_script:
+    - apk update && apk add git openssh-client
+    - git config --global user.email "${GIT_USER_EMAIL}"
+    - git config --global user.name "${GIT_USER_NAME}"
+    - eval $(ssh-agent -s)
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - git checkout -b auto-content-${CI_PIPELINE_IID}
+    - GIT_SUBMOD_SHA_BEFORE=$(git submodule status | grep content | awk '{print $1}')
+    - git submodule update --remote --merge
+    - git add content
+    - GIT_SUBMOD_SHA_AFTER=$(git submodule status | grep content | awk '{print $1}')
+    - git commit -m "automated content submodule update from ${GIT_SUBMOD_SHA_BEFORE} to ${GIT_SUBMOD_SHA_AFTER}"
+    - git remote set-url origin git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git
+    - git push --set-upstream origin auto-content-${CI_PIPELINE_IID} -o merge_request.create -o merge_request.target=${CI_DEFAULT_BRANCH} -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch -o merge_request.title="Automated content submodule update ${CI_PIPELINE_IID}"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+
 .build:
   cache: {}
   script:
@@ -37,28 +62,3 @@ pages:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-
-content:
-  stage: content
-  cache: {}
-  before_script:
-    - apk update && apk add git openssh-client
-    - git config --global user.email "${GIT_USER_EMAIL}"
-    - git config --global user.name "${GIT_USER_NAME}"
-    - eval $(ssh-agent -s)
-    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan ${CI_SERVER_HOST} >> ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-  script:
-    - git checkout -b auto-content-${CI_PIPELINE_IID}
-    - GIT_SUBMOD_SHA_BEFORE=$(git submodule status | grep content | awk '{print $1}')
-    - git submodule update --remote --merge
-    - git add content
-    - GIT_SUBMOD_SHA_AFTER=$(git submodule status | grep content | awk '{print $1}')
-    - git commit -m "automated content submodule update from ${GIT_SUBMOD_SHA_BEFORE} to ${GIT_SUBMOD_SHA_AFTER}"
-    - git remote set-url origin git@${CI_SERVER_HOST}:${CI_PROJECT_PATH}.git
-    - git push --set-upstream origin auto-content-${CI_PIPELINE_IID} -o merge_request.create -o merge_request.target=${CI_DEFAULT_BRANCH} -o merge_request.merge_when_pipeline_succeeds -o merge_request.remove_source_branch -o merge_request.title="Automated content submodule update ${CI_PIPELINE_IID}"
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
