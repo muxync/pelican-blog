@@ -80,6 +80,7 @@ publish:
 # https://github.com/getpelican/pelican/wiki/Tips-n-Tricks
 
 PAGESDIR=$(INPUTDIR)/pages
+POSTSDIR=$(INPUTDIR)/posts
 DATE := $(shell date +'%Y-%m-%d %H:%M')
 SLUG := $(shell echo '${NAME}' | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-' | tr A-Z a-z)
 EXT ?= md
@@ -87,18 +88,18 @@ AUTHOR = Mark Mulligan
 
 newpost:
 ifdef NAME
-	echo "Title: $(NAME)"      > $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Slug: $(SLUG)"      >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Date: $(DATE)"      >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Modified: $(DATE)"  >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Authors: ${AUTHOR}" >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Category:"          >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Tags:"              >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo "Summary:"           >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo ""                   >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo ""                   >> $(INPUTDIR)/$(SLUG).$(EXT)
-	echo ""                   >> $(INPUTDIR)/$(SLUG).$(EXT)
-	${EDITOR} ${INPUTDIR}/${SLUG}.${EXT}
+	echo "Title: $(NAME)"      > $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Slug: $(SLUG)"      >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Date: $(DATE)"      >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Modified: $(DATE)"  >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Authors: ${AUTHOR}" >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Category:"          >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Tags:"              >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo "Summary:"           >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo ""                   >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo ""                   >> $(POSTSDIR)/$(SLUG).$(EXT)
+	echo ""                   >> $(POSTSDIR)/$(SLUG).$(EXT)
+	${EDITOR} ${POSTSDIR}/${SLUG}.${EXT}
 else
 	@echo 'Variable NAME is not defined.'
 	@echo 'Do make newpost NAME='"'"'Post Name'"'"
@@ -106,7 +107,7 @@ endif
 
 editpost:
 ifdef NAME
-	${EDITOR} ${INPUTDIR}/${SLUG}.${EXT}
+	${EDITOR} ${POSTSDIR}/${SLUG}.${EXT}
 else
 	@echo 'Variable NAME is not defined.'
 	@echo 'Do make editpost NAME='"'"'Post Name'"'"
